@@ -2,19 +2,19 @@ import json
 
 
 def Countryconvert(code):
-    with open("../countries.json", 'r') as r:
-        j = json.loads(r.content.decode("utf-8"))
+    with open("../countries.json", 'r', encoding="utf-8") as r:
+        j = json.loads(r.read())
         for i in j:
             if code == i['iso2']:
                 return i['translations']['cn'], i['emoji']
 
 
 def exec():
-    with open("../netflix.json", 'r') as r:
-        j = json.loads(r.content.decode("utf-8"))
+    with open("../netflix.json", 'r', encoding="utf-8") as r:
+        j = json.loads(r.read())
         countrylist = []
         for i in j:
-            if i['Code'] != 'RU':
+            if i['Currency'] != '':
                 c, e = Countryconvert(i['Code'])
                 tax = 1
                 if i['Code'] == 'AR':
@@ -35,7 +35,7 @@ def exec():
         countrylist = sorted(countrylist, key=lambda i: i['PremiumCNY'])
         jsObj = json.dumps(countrylist)
 
-        fileObject = open('api_ranking.json', 'w')
+        fileObject = open('api_ranking.json', 'w', encoding='utf-8')
         fileObject.write(jsObj)
         fileObject.close()
 
