@@ -25,7 +25,7 @@ jobs:
     - name: wget
       uses: wei/wget@v1
       with:
-        args: https://opensheet.elk.sh/1xZUXsnGFm34PZX_K5VUkYEsmm1AC6_QKOENdUHbsVpc/Origin -O netflix.json --no-check-certificate
+        args: https://opensheet.elk.sh/1b3qotAFrjHai7ny3AGGCTHsZ1xyl4yXviPU3Grqt940/by%20regions -O netflix.json --no-check-certificate
         
     - name: Update rank
       run: |
